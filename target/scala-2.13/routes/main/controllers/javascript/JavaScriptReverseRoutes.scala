@@ -49,5 +49,55 @@ package controllers.javascript {
   
   }
 
+  // @LINE:12
+  class ReverseApplicationController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:12
+    def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.create",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "api"})
+        }
+      """
+    )
+  
+    // @LINE:13
+    def read: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.read",
+      """
+        function(username0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("username", username0))})
+        }
+      """
+    )
+  
+    // @LINE:14
+    def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.update",
+      """
+        function(username0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("username", username0))})
+        }
+      """
+    )
+  
+    // @LINE:15
+    def delete: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.delete",
+      """
+        function(username0) {
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("username", username0))})
+        }
+      """
+    )
+  
+  }
+
 
 }

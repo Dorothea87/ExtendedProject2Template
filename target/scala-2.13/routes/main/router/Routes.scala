@@ -16,6 +16,8 @@ class Routes(
   HomeController_0: controllers.HomeController,
   // @LINE:10
   Assets_1: controllers.Assets,
+  // @LINE:12
+  ApplicationController_2: controllers.ApplicationController,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -24,13 +26,15 @@ class Routes(
     // @LINE:7
     HomeController_0: controllers.HomeController,
     // @LINE:10
-    Assets_1: controllers.Assets
-  ) = this(errorHandler, HomeController_0, Assets_1, "/")
+    Assets_1: controllers.Assets,
+    // @LINE:12
+    ApplicationController_2: controllers.ApplicationController
+  ) = this(errorHandler, HomeController_0, Assets_1, ApplicationController_2, "/")
 
   def withPrefix(addPrefix: String): Routes = {
     val prefix = play.api.routing.Router.concatPrefix(addPrefix, this.prefix)
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_0, Assets_1, prefix)
+    new Routes(errorHandler, HomeController_0, Assets_1, ApplicationController_2, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -40,6 +44,10 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.create()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.read(username:String)"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.update(username:String)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.delete(username:String)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -83,6 +91,78 @@ class Routes(
     )
   )
 
+  // @LINE:12
+  private[this] lazy val controllers_ApplicationController_create2_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api")))
+  )
+  private[this] lazy val controllers_ApplicationController_create2_invoker = createInvoker(
+    ApplicationController_2.create(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ApplicationController",
+      "create",
+      Nil,
+      "POST",
+      this.prefix + """api""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:13
+  private[this] lazy val controllers_ApplicationController_read3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_ApplicationController_read3_invoker = createInvoker(
+    ApplicationController_2.read(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ApplicationController",
+      "read",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:14
+  private[this] lazy val controllers_ApplicationController_update4_route = Route("PUT",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_ApplicationController_update4_invoker = createInvoker(
+    ApplicationController_2.update(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ApplicationController",
+      "update",
+      Seq(classOf[String]),
+      "PUT",
+      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:15
+  private[this] lazy val controllers_ApplicationController_delete5_route = Route("DELETE",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_ApplicationController_delete5_invoker = createInvoker(
+    ApplicationController_2.delete(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ApplicationController",
+      "delete",
+      Seq(classOf[String]),
+      "DELETE",
+      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -96,6 +176,30 @@ class Routes(
     case controllers_Assets_versioned1_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned1_invoker.call(Assets_1.versioned(path, file))
+      }
+  
+    // @LINE:12
+    case controllers_ApplicationController_create2_route(params@_) =>
+      call { 
+        controllers_ApplicationController_create2_invoker.call(ApplicationController_2.create())
+      }
+  
+    // @LINE:13
+    case controllers_ApplicationController_read3_route(params@_) =>
+      call(params.fromPath[String]("username", None)) { (username) =>
+        controllers_ApplicationController_read3_invoker.call(ApplicationController_2.read(username))
+      }
+  
+    // @LINE:14
+    case controllers_ApplicationController_update4_route(params@_) =>
+      call(params.fromPath[String]("username", None)) { (username) =>
+        controllers_ApplicationController_update4_invoker.call(ApplicationController_2.update(username))
+      }
+  
+    // @LINE:15
+    case controllers_ApplicationController_delete5_route(params@_) =>
+      call(params.fromPath[String]("username", None)) { (username) =>
+        controllers_ApplicationController_delete5_invoker.call(ApplicationController_2.delete(username))
       }
   }
 }
