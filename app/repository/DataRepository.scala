@@ -25,13 +25,32 @@ class DataRepository @Inject()(
 ) {
 
 
-  def create()
+  def create(user: DataModel): Future[DataModel] =
+    collection.insertOne(user).toFuture().map(_ => user)
 
-  def read()
+  private def byUsername(username: String): Bson =
+    Filters.and(
+      Filters.equal("username", username)
+    )
 
-  def update()
+  def read(username: String): Future[DataModel] =
+    collection.find(byUsername(username)).headOption flatMap {
+      case Some(data) =>
+        Future(data)
+    }
 
-  def delete()
+  def update(username: String, user: DataModel): Future[result.UpdateResult] =
+    collection.replaceOne(
+      filter = byUsername(username),
+      replacement = user,
+      options = new ReplaceOptions().upsert(true) //What happens when we set this to false?
+    ).toFuture()
 
-  def deleteAll()
+  def delete(username: String): Future[result.DeleteResult] =
+    collection.deleteOne(
+      filter = byUsername(username)
+    ).toFuture()
+
+  def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ())
+
 }

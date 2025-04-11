@@ -3,10 +3,10 @@ package controllers
 import play.api.libs.json.JsValue
 import play.api.mvc.{BaseController, ControllerComponents, Results}
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
 
-
+@Singleton
 class ApplicationController @Inject() (val controllerComponents: ControllerComponents) extends BaseController {
 
 def create(): Action[JsValue] = Action.async(){ implicit request =>
