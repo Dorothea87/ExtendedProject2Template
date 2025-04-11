@@ -24,19 +24,19 @@ class DataRepository @Inject()(
   replaceIndexes = false
 ) {
 
-
-  def create(user: DataModel): Future[DataModel] =
-    collection.insertOne(user).toFuture().map(_ => user)
-
   private def byUsername(username: String): Bson =
     Filters.and(
       Filters.equal("username", username)
     )
 
+  def create(user: DataModel): Future[DataModel] =
+    collection.find(byUsername(user.username)).headOption flatMap {
+      case None => collection.insertOne(user).toFuture().map(_ => user)
+    }
+
   def read(username: String): Future[DataModel] =
     collection.find(byUsername(username)).headOption flatMap {
-      case Some(data) =>
-        Future(data)
+      case Some(data) => Future(data)
     }
 
   def update(username: String, user: DataModel): Future[result.UpdateResult] =
