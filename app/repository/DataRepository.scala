@@ -1,6 +1,8 @@
 package repository
 
+import com.google.inject.ImplementedBy
 import model.DataModel
+import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
 import org.mongodb.scala.model.Filters.empty
 import org.mongodb.scala.model._
@@ -10,6 +12,21 @@ import uk.gov.hmrc.mongo.play.json.PlayMongoRepository
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
+
+
+@ImplementedBy(classOf[DataRepository])
+trait DataRepositoryTrait {
+  def create(book: DataModel): Future[DataModel]
+
+  def read(id: String): Future[DataModel]
+
+  def update(id: String, book: DataModel): Future[DataModel]
+
+  def delete(id: String): Future[String]
+
+  def deleteAll(): Future[Unit]
+}
+
 
 @Singleton
 class DataRepository @Inject()(
