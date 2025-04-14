@@ -47,5 +47,8 @@ target
 test-result
 tmp
 .vscode/
-
+.bsp
+.project
+target/streams
+target/scala-2.13
 

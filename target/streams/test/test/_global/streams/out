@@ -2,67 +2,22 @@
 [0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
 [0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@6e2c9341, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@45afc369, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from a new instance of controller[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from the application[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from the router *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  com.google.inject.ProvisionException: Unable to provision, see the following errors:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m1) Error injecting constructor, com.mongodb.MongoCommandException: Command failed with error 13297 (DatabaseDifferCase): 'db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]", "code": 13297, "codeName": "DatabaseDifferCase", "$clusterTime": {"clusterTime": {"$timestamp": {"t": 1744640484, "i": 1}}, "signature": {"hash": {"$binary": {"base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=", "subType": "00"}}, "keyId": 0}}, "operationTime": {"$timestamp": {"t": 1744640484, "i": 1}}}[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at repository.DataRepository.<init>(DataRepository.scala:33)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at repository.DataRepository.class(DataRepository.scala:31)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating repository.DataRepository[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating repository.DataRepositoryTrait[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m    for the 1st parameter of service.RepositoryService.<init>(RepositoryService.scala:11)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at service.RepositoryService.class(RepositoryService.scala:11)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating service.RepositoryService[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m    for the 2nd parameter of controllers.ApplicationController.<init>(ApplicationController.scala:13)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at controllers.ApplicationController.class(ApplicationController.scala:13)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating controllers.ApplicationController[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m    for the 4th parameter of router.Routes.<init>(Routes.scala:32)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating router.Routes[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating play.api.inject.RoutesProvider[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  while locating play.api.routing.Router[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m1 error[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.google.inject.internal.InternalProvisionException.toProvisionException(InternalProvisionException.java:226)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.google.inject.internal.InjectorImpl$1.get(InjectorImpl.java:1097)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.routeRequest(HttpRequestHandler.scala:289)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.JavaCompatibleHttpRequestHandler.routeRequest(HttpRequestHandler.scala:396)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.routeWithFallback$1(HttpRequestHandler.scala:187)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.handlerForRequest(HttpRequestHandler.scala:237)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route(Helpers.scala:288)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route$(Helpers.scala:287)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.Helpers$.route(Helpers.scala:672)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route(Helpers.scala:303)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  Cause: com.mongodb.MongoCommandException: Command failed with error 13297 (DatabaseDifferCase): 'db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]", "code": 13297, "codeName": "DatabaseDifferCase", "$clusterTime": {"clusterTime": {"$timestamp": {"t": 1744640484, "i": 1}}, "signature": {"hash": {"$binary": {"base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=", "subType": "00"}}, "keyId": 0}}, "operationTime": {"$timestamp": {"t": 1744640484, "i": 1}}}[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:198)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:517)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:503)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:815)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:782)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:650)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:647)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:250)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:233)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@32464a14, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@799d4f69, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should create a user in the database[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 3 seconds, 967 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 4[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 4 seconds, 721 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 3, failed 1, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 3, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
-[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
-[0m[[0m[31merror[0m] [0m[0m	controllers.HomeControllerSpec[0m
-[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.HomeControllerSpec[0m
