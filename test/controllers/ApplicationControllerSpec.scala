@@ -9,8 +9,8 @@ import play.api.test.Helpers._
 class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   val TestApplicationController = new ApplicationController(
-    component
-  )
+    component, repoService
+  )(executionContext)
   "ApplicationController .create()" should {
     val result = TestApplicationController.create()(FakeRequest())
 
