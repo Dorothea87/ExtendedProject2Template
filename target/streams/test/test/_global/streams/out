@@ -2,99 +2,67 @@
 [0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
 [0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@64d2d351, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@6e2c9341, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31mcontrollers.HomeControllerSpec *** ABORTED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:125)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:73)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.$anonfun$configureLoggerFactory$1(GuiceApplicationBuilder.scala:137)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.Option.map(Option.scala:242)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.configureLoggerFactory(GuiceApplicationBuilder.scala:136)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:112)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:201)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatestplus.play.guice.GuiceFakeApplicationFactory.fakeApplication(GuiceFakeApplicationFactory.scala:32)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at org.scalatestplus.play.guice.GuiceFakeApplicationFactory.fakeApplication$(GuiceFakeApplicationFactory.scala:32)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from a new instance of controller[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from the application[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from the router *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  com.google.inject.ProvisionException: Unable to provision, see the following errors:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m1) Error injecting constructor, com.mongodb.MongoCommandException: Command failed with error 13297 (DatabaseDifferCase): 'db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]", "code": 13297, "codeName": "DatabaseDifferCase", "$clusterTime": {"clusterTime": {"$timestamp": {"t": 1744640484, "i": 1}}, "signature": {"hash": {"$binary": {"base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=", "subType": "00"}}, "keyId": 0}}, "operationTime": {"$timestamp": {"t": 1744640484, "i": 1}}}[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at repository.DataRepository.<init>(DataRepository.scala:33)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at repository.DataRepository.class(DataRepository.scala:31)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating repository.DataRepository[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating repository.DataRepositoryTrait[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    for the 1st parameter of service.RepositoryService.<init>(RepositoryService.scala:11)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at service.RepositoryService.class(RepositoryService.scala:11)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating service.RepositoryService[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    for the 2nd parameter of controllers.ApplicationController.<init>(ApplicationController.scala:13)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at controllers.ApplicationController.class(ApplicationController.scala:13)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating controllers.ApplicationController[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    for the 4th parameter of router.Routes.<init>(Routes.scala:32)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating router.Routes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating play.api.inject.RoutesProvider[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  while locating play.api.routing.Router[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m1 error[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.google.inject.internal.InternalProvisionException.toProvisionException(InternalProvisionException.java:226)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.google.inject.internal.InjectorImpl$1.get(InjectorImpl.java:1097)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.routeRequest(HttpRequestHandler.scala:289)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.JavaCompatibleHttpRequestHandler.routeRequest(HttpRequestHandler.scala:396)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.routeWithFallback$1(HttpRequestHandler.scala:187)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.http.DefaultHttpRequestHandler.handlerForRequest(HttpRequestHandler.scala:237)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route(Helpers.scala:288)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route$(Helpers.scala:287)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.Helpers$.route(Helpers.scala:672)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.test.RouteInvokers.route(Helpers.scala:303)[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[31merror[0m] [0m[0mUncaught exception when running controllers.HomeControllerSpec: java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m
-[0m[[0m[31merror[0m] [0m[0msbt.ForkMain$ForkError: java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:125)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:73)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.$anonfun$configureLoggerFactory$1(GuiceApplicationBuilder.scala:137)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.map(Option.scala:242)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.configureLoggerFactory(GuiceApplicationBuilder.scala:136)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:112)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:201)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.guice.GuiceFakeApplicationFactory.fakeApplication(GuiceFakeApplicationFactory.scala:32)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.guice.GuiceFakeApplicationFactory.fakeApplication$(GuiceFakeApplicationFactory.scala:32)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.HomeControllerSpec.fakeApplication(HomeControllerSpec.scala:11)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneAppPerSuite.app(BaseOneAppPerSuite.scala:34)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneAppPerSuite.app$(BaseOneAppPerSuite.scala:34)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.HomeControllerSpec.app$lzycompute(HomeControllerSpec.scala:11)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.HomeControllerSpec.app(HomeControllerSpec.scala:11)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneAppPerSuite.run(BaseOneAppPerSuite.scala:47)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneAppPerSuite.run$(BaseOneAppPerSuite.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.HomeControllerSpec.run(HomeControllerSpec.scala:11)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:321)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:517)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.ForkMain$Run.lambda$runTest$1(ForkMain.java:413)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@1b68b9a4, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  Cause: com.mongodb.MongoCommandException: Command failed with error 13297 (DatabaseDifferCase): 'db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]' on server localhost:27017. The full response is {"ok": 0.0, "errmsg": "db already exists with different case already have: [gitHubTutorial] trying to create [githubTutorial]", "code": 13297, "codeName": "DatabaseDifferCase", "$clusterTime": {"clusterTime": {"$timestamp": {"t": 1744640484, "i": 1}}, "signature": {"hash": {"$binary": {"base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=", "subType": "00"}}, "keyId": 0}}, "operationTime": {"$timestamp": {"t": 1744640484, "i": 1}}}[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:198)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:517)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:503)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:815)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:782)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:650)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:647)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:250)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:233)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@32464a14, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31mcontrollers.ApplicationControllerSpec *** ABORTED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:125)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:73)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.$anonfun$configureLoggerFactory$1(GuiceApplicationBuilder.scala:137)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.Option.map(Option.scala:242)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.configureLoggerFactory(GuiceApplicationBuilder.scala:136)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:112)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:201)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at baseSpec.BaseSpecWithApplication.fakeApplication(BaseSpec.scala:35)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at baseSpec.BaseSpecWithApplication.fakeApplication$(BaseSpec.scala:32)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[31merror[0m] [0m[0mUncaught exception when running controllers.ApplicationControllerSpec: java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m
-[0m[[0m[31merror[0m] [0m[0msbt.ForkMain$ForkError: java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.util.ContextInitializer.configureByResource(java.net.URL)'[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:125)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.libs.logback.LogbackLoggerConfigurator.configure(LogbackLoggerConfigurator.scala:73)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.$anonfun$configureLoggerFactory$1(GuiceApplicationBuilder.scala:137)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.map(Option.scala:242)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.configureLoggerFactory(GuiceApplicationBuilder.scala:136)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.applicationModule(GuiceApplicationBuilder.scala:112)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:201)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:155)[0m
-[0m[[0m[31merror[0m] [0m[0m	at baseSpec.BaseSpecWithApplication.fakeApplication(BaseSpec.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at baseSpec.BaseSpecWithApplication.fakeApplication$(BaseSpec.scala:32)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.fakeApplication(ApplicationControllerSpec.scala:6)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.app(BaseOneServerPerSuite.scala:143)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.app$(BaseOneServerPerSuite.scala:143)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.app$lzycompute(ApplicationControllerSpec.scala:6)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.app(ApplicationControllerSpec.scala:6)[0m
-[0m[[0m[31merror[0m] [0m[0m	at baseSpec.BaseSpecWithApplication.$init$(BaseSpec.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.<init>(ApplicationControllerSpec.scala:6)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Class.newInstance(Class.java:584)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:454)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.ForkMain$Run.lambda$runTest$1(ForkMain.java:413)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 960 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 0, aborted 2[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m*** 2 SUITES ABORTED ***[0m[0m
-[0m[[0m[31merror[0m] [0m[0mError during tests:[0m
-[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should create a user in the database[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 3 seconds, 967 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 4[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 3, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
 [0m[[0m[31merror[0m] [0m[0m	controllers.HomeControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

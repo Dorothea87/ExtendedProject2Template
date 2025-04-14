@@ -1,0 +1,9 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/dorothea.toeller/Documents/ExtendedProject2Template/app/repository/DataRepository.scala:49:69: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: Some(_)[0m
+[0m[[0m[33mwarn[0m] [0m[0m    collection.find(byUsername(user.username)).headOption() flatMap {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/dorothea.toeller/Documents/ExtendedProject2Template/app/repository/DataRepository.scala:54:64: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
+[0m[[0m[33mwarn[0m] [0m[0m    collection.find(byUsername(username)).headOption() flatMap {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

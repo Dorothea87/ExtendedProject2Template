@@ -26,12 +26,6 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
     100
   )
 
-  //
-  //  "ApplicationController .create()" should {
-  //    val result = TestApplicationController.create()(FakeRequest())
-  //
-  //  }
-
   "ApplicationController .create" should {
 
     "create a user in the database" in {
@@ -39,27 +33,23 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
 
-      status(createdResult) shouldBe Status.OK
+      status(createdResult) shouldBe Status.CREATED
       afterEach()
     }
 
 
   }
 
-  "ApplicationController .update(username: String)" should {
-
-    "return a 200 OK" in {
-
-    }
-  }
-
-  "ApplicationController .read(username: String)" should {
-
-  }
-
-  "ApplicationController .delete(username: String)" should {
-
-  }
+//  "ApplicationController .update(username: String)" should {
+//  }
+//
+//  "ApplicationController .read(username: String)" should {
+//
+//  }
+//
+//  "ApplicationController .delete(username: String)" should {
+//
+//  }
 
 
   override def beforeEach(): Unit = await(repository.deleteAll())

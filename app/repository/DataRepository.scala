@@ -2,7 +2,6 @@ package repository
 
 import com.google.inject.ImplementedBy
 import model.DataModel
-import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
 import org.mongodb.scala.model.Filters.empty
 import org.mongodb.scala.model._
@@ -16,13 +15,13 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @ImplementedBy(classOf[DataRepository])
 trait DataRepositoryTrait {
-  def create(book: DataModel): Future[DataModel]
+  def create(user: DataModel): Future[DataModel]
 
   def read(id: String): Future[DataModel]
 
-  def update(id: String, book: DataModel): Future[DataModel]
+  def update(id: String, user: DataModel): Future[result.UpdateResult]
 
-  def delete(id: String): Future[String]
+  def delete(id: String): Future[result.DeleteResult]
 
   def deleteAll(): Future[Unit]
 }
@@ -39,7 +38,7 @@ class DataRepository @Inject()(
     Indexes.ascending("_id")
   )),
   replaceIndexes = false
-) {
+) with DataRepositoryTrait {
 
   private def byUsername(username: String): Bson =
     Filters.and(
@@ -47,12 +46,12 @@ class DataRepository @Inject()(
     )
 
   def create(user: DataModel): Future[DataModel] =
-    collection.find(byUsername(user.username)).headOption flatMap {
+    collection.find(byUsername(user.username)).headOption() flatMap {
       case None => collection.insertOne(user).toFuture().map(_ => user)
     }
 
   def read(username: String): Future[DataModel] =
-    collection.find(byUsername(username)).headOption flatMap {
+    collection.find(byUsername(username)).headOption() flatMap {
       case Some(data) => Future(data)
     }
 

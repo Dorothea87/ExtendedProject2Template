@@ -1,6 +1,7 @@
 package service
 
 import model.DataModel
+import org.mongodb.scala.result
 import repository.DataRepositoryTrait
 
 import javax.inject.{Inject, Singleton}
@@ -15,9 +16,9 @@ class RepositoryService @Inject()(dataRepository: DataRepositoryTrait)(implicit 
   def read(username: String): Future[DataModel] =
     dataRepository.read(username)
 
-  def update(username: String, user: DataModel): Future[DataModel] =
+  def update(username: String, user: DataModel): Future[result.UpdateResult] =
     dataRepository.update(username, user)
 
-  def delete(username: String): Future[String] =
+  def delete(username: String): Future[result.DeleteResult] =
     dataRepository.delete(username)
 }
