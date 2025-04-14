@@ -14,10 +14,10 @@ import play.api.libs.ws.WSClient
 import play.api.mvc.{AnyContentAsEmpty, MessagesControllerComponents}
 import play.api.test.CSRFTokenHelper.CSRFFRequestHeader
 import play.api.test.FakeRequest
+import shared.TestRequest
 import play.api.test.Helpers.{DELETE, GET, POST, PUT}
 import repository.DataRepository
 import service.RepositoryService
-import shared.TestRequest
 
 import scala.concurrent.ExecutionContext
 
