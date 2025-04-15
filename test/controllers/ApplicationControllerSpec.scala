@@ -37,6 +37,16 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       afterEach()
     }
 
+    "return BadRequest if JSON is invalid" in {
+      beforeEach()
+
+      val invalidRequest = buildPost("/api").withBody[JsValue](Json.obj("invalidField" -> "value"))
+      val result = TestApplicationController.create()(invalidRequest)
+
+      status(result) shouldBe Status.BAD_REQUEST
+
+      afterEach()
+    }
 
   }
 
@@ -61,6 +71,37 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       afterEach()
     }
+
+    "return 400 BadRequest if JSON is invalid (non-existent key)" in {
+      beforeEach()
+
+      val createRequest: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+      val createResult: Future[Result] = TestApplicationController.create()(createRequest)
+
+      status(createResult) shouldBe Status.CREATED
+
+      val invalidRequest = buildPost("/api/testId").withBody[JsValue](Json.obj("invalidField" -> "value"))
+      val updateResult: Future[Result] = TestApplicationController.update("test name")(invalidRequest)
+
+      status(updateResult) shouldBe Status.BAD_REQUEST
+
+      afterEach()
+    }
+
+    "Return a bad request, 400 if JSON invalid (value wrong type)" in {
+      beforeEach()
+
+      val createRequest: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+      val createResult: Future[Result] = TestApplicationController.create()(createRequest)
+
+      status(createResult) shouldBe Status.CREATED
+
+      val invalidRequest: FakeRequest[JsValue] = buildPut("/api/${dataModel.username}").withBody(Json.obj("created_at" -> 2))
+      val updatedResult: Future[Result] = TestApplicationController.update(dataModel.username)(invalidRequest)
+
+      status(updatedResult) shouldBe Status.BAD_REQUEST
+
+      afterEach()}
   }
 
   "ApplicationController .read(username: String)" should {
@@ -79,6 +120,17 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       afterEach()
     }
+
+   /* "return 404 NotFound for invalid username" in {
+      beforeEach()
+
+      val readResult: Future[Result] = TestApplicationController.read("invalidUsername")(FakeRequest())
+
+      status(readResult) shouldBe Status.NOT_FOUND
+
+      afterEach()
+    }*/
+
   }
 
   "ApplicationController .delete(username: String)" should {
