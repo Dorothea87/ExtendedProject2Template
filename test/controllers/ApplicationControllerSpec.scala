@@ -42,6 +42,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   "ApplicationController .update(username: String)" should {
     "update an existing data set" in {
+      beforeEach()
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
 
@@ -58,6 +59,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       val updatedContent = contentAsJson(updatedResult).as[DataModel]
       updatedContent.username shouldBe "Updated Username"
 
+      afterEach()
     }
   }
 
@@ -69,6 +71,11 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       status(createdResult) shouldBe Status.CREATED
 
+
+      val readResult: Future[Result] = TestApplicationController.read("test name")(FakeRequest())
+
+      status(readResult) shouldBe Status.OK
+      contentAsJson(readResult).as[DataModel] shouldBe dataModel
 
       afterEach()
     }
