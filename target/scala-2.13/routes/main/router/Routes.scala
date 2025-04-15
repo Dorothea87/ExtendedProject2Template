@@ -45,9 +45,9 @@ class Routes(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.create()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.read(username:String)"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.update(username:String)"""),
-    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.delete(username:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """read/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.read(username:String)"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """update/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.update(username:String)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """delete/""" + "$" + """username<[^/]+>""", """controllers.ApplicationController.delete(username:String)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -111,7 +111,7 @@ class Routes(
 
   // @LINE:13
   private[this] lazy val controllers_ApplicationController_read3_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("read/"), DynamicPart("username", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_read3_invoker = createInvoker(
     ApplicationController_2.read(fakeValue[String]),
@@ -121,7 +121,7 @@ class Routes(
       "read",
       Seq(classOf[String]),
       "GET",
-      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      this.prefix + """read/""" + "$" + """username<[^/]+>""",
       """""",
       Seq()
     )
@@ -129,7 +129,7 @@ class Routes(
 
   // @LINE:14
   private[this] lazy val controllers_ApplicationController_update4_route = Route("PUT",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("update/"), DynamicPart("username", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_update4_invoker = createInvoker(
     ApplicationController_2.update(fakeValue[String]),
@@ -139,7 +139,7 @@ class Routes(
       "update",
       Seq(classOf[String]),
       "PUT",
-      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      this.prefix + """update/""" + "$" + """username<[^/]+>""",
       """""",
       Seq()
     )
@@ -147,7 +147,7 @@ class Routes(
 
   // @LINE:15
   private[this] lazy val controllers_ApplicationController_delete5_route = Route("DELETE",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("username", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("delete/"), DynamicPart("username", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_delete5_invoker = createInvoker(
     ApplicationController_2.delete(fakeValue[String]),
@@ -157,7 +157,7 @@ class Routes(
       "delete",
       Seq(classOf[String]),
       "DELETE",
-      this.prefix + """api/""" + "$" + """username<[^/]+>""",
+      this.prefix + """delete/""" + "$" + """username<[^/]+>""",
       """""",
       Seq()
     )

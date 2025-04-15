@@ -48,11 +48,12 @@ class DataRepository @Inject()(
   def create(user: DataModel): Future[DataModel] =
     collection.find(byUsername(user.username)).headOption() flatMap {
       case None => collection.insertOne(user).toFuture().map(_ => user)
+      case Some(existingUser) => Future.successful(existingUser)
     }
 
   def read(username: String): Future[DataModel] =
-    collection.find(byUsername(username)).headOption() flatMap {
-      case Some(data) => Future(data)
+    collection.find(byUsername(username)).headOption().map {
+      case Some(data) => data
     }
 
   def update(username: String, user: DataModel): Future[result.UpdateResult] =
