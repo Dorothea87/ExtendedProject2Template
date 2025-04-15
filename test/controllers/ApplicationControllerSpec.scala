@@ -40,16 +40,57 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   }
 
-//  "ApplicationController .update(username: String)" should {
-//  }
-//
-//  "ApplicationController .read(username: String)" should {
-//
-//  }
-//
-//  "ApplicationController .delete(username: String)" should {
-//
-//  }
+  "ApplicationController .update(username: String)" should {
+    "update an existing data set" in {
+      val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+      val createdResult: Future[Result] = TestApplicationController.create()(request)
+
+      status(createdResult) shouldBe Status.CREATED
+
+      val updatedModel = dataModel.copy(username = "Updated Username")
+      val updateRequest: FakeRequest[JsValue] = buildPut("/api/${dataModel.username}").withBody[JsValue](Json.toJson(updatedModel))
+
+
+      val updatedResult: Future[Result] = TestApplicationController.update(dataModel.username)(updateRequest)
+      status(updatedResult) shouldBe Status.ACCEPTED
+
+
+      val updatedContent = contentAsJson(updatedResult).as[DataModel]
+      updatedContent.username shouldBe "Updated Username"
+
+    }
+  }
+
+  "ApplicationController .read(username: String)" should {
+    "find a user in the database by username" in {
+      beforeEach()
+      val request: FakeRequest[JsValue] = buildGet("/api/${dataModel.username}").withBody[JsValue](Json.toJson(dataModel))
+      val createdResult: Future[Result] = TestApplicationController.create()(request)
+
+      status(createdResult) shouldBe Status.CREATED
+
+
+      afterEach()
+    }
+  }
+
+  "ApplicationController .delete(username: String)" should {
+
+    "delete a user in the database" in {
+      beforeEach()
+      val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+      val createdResult: Future[Result] = TestApplicationController.create()(request)
+
+      status(createdResult) shouldBe Status.CREATED
+
+      val deleteRequest: FakeRequest[JsValue] = buildDelete("/api").withBody[JsValue](Json.toJson(dataModel))
+      val deletedResult: Future[Result] = TestApplicationController.delete(dataModel.username)(FakeRequest())
+
+      status(createdResult) shouldBe Status.CREATED
+      afterEach()
+    }
+
+  }
 
 
   override def beforeEach(): Unit = await(repository.deleteAll())
