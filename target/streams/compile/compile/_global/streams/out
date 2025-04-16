@@ -1,4 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/nimo.mohamed/Documents/ExtendedProject2Template/app/repository/DataRepository.scala:55:60: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/dorothea.toeller/Documents/ExtendedProject2Template/app/repository/DataRepository.scala:55:60: match may not be exhaustive.[0m
 [0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
 [0m[[0m[33mwarn[0m] [0m[0m    collection.find(byUsername(username)).headOption().map {[0m
 [0m[[0m[33mwarn[0m] [0m[0m                                                           ^[0m
