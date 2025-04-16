@@ -4,6 +4,6 @@ import connector.GithubConnector
 
 import javax.inject.Inject
 
-class ApplicationService @Inject()(connector: GithubConnector) {
+class GitHubService @Inject()(connector: GithubConnector) {
 
 }
