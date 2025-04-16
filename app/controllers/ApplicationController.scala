@@ -1,16 +1,16 @@
 package controllers
 
-import models.DataModel
+import models.{DataModel, GitHubUser}
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.mvc._
-import services.RepositoryService
+import services.{GitHubService, RepositoryService}
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 
 @Singleton
-class ApplicationController @Inject()(val controllerComponents: ControllerComponents, val repositoryService: RepositoryService)(implicit val ec: ExecutionContext) extends BaseController {
+class ApplicationController @Inject()(val controllerComponents: ControllerComponents, val repositoryService: RepositoryService, val service: GitHubService)(implicit val ec: ExecutionContext) extends BaseController {
 
   def create(): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
@@ -40,5 +40,12 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   def delete(username: String): Action[AnyContent] = Action.async { implicit request =>
     repositoryService.delete(username).map(_ => Accepted)
 
+  }
+
+  def getGithubUserByName(username: String): Action[AnyContent] = Action.async { implicit request =>
+    service.getGithubUserByName(username = username).map {
+      case Left (error) => BadRequest(Json.obj("error" -> "Failed to retrieve user."))
+      case Right(GitHubUser) => Ok(Json.toJson(GitHubUser))
+    }
   }
 }

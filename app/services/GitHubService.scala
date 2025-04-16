@@ -1,7 +1,7 @@
 package services
 
 import connectors.GithubConnector
-import models.DataModel
+import models.{DataModel, GitHubUser}
 
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
