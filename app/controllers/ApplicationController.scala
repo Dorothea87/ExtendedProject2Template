@@ -1,6 +1,6 @@
 package controllers
 
-import models.{DataModel, GitHubUser}
+import models.{DataModel, GitHubUser, APIError}
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.mvc._
 import services.{GitHubService, RepositoryService}
@@ -43,9 +43,10 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   }
 
   def getGithubUserByName(username: String): Action[AnyContent] = Action.async { implicit request =>
-    service.getGithubUserByName(username = username).map {
-      case Left (error) => BadRequest(Json.obj("error" -> "Failed to retrieve user."))
-      case Right(GitHubUser) => Ok(Json.toJson(GitHubUser))
+    service.getGithubUserByName(username = username).value.map {
+      case Left(error) => APIError(error)
+      case Right(user) => Ok {
+        Json.toJson(user)
+      }
     }
   }
-}
