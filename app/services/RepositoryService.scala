@@ -1,8 +1,8 @@
-package service
+package services
 
-import model.DataModel
+import models.DataModel
 import org.mongodb.scala.result
-import repository.DataRepositoryTrait
+import repositories.DataRepositoryTrait
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}

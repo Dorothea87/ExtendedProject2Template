@@ -16,8 +16,8 @@ import play.api.test.CSRFTokenHelper.CSRFFRequestHeader
 import play.api.test.FakeRequest
 import shared.TestRequest
 import play.api.test.Helpers.{DELETE, GET, POST, PUT}
-import repository.DataRepository
-import service.RepositoryService
+import repositories.DataRepository
+import services.RepositoryService
 
 import scala.concurrent.ExecutionContext
 

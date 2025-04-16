@@ -1,4 +1,4 @@
-package connector
+package connectors
 
 import play.api.libs.json.OFormat
 import play.api.libs.ws.WSClient
