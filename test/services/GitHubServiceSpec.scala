@@ -38,5 +38,18 @@ class GitHubServiceSpec extends BaseSpec with MockFactory with ScalaFutures with
         result shouldBe Right(expectedUser)
       }
     }
+    "return an error" in {
+      val error = APIError.BadAPIResponse(500, "API call failed")
+
+      (mockConnector.get[GitHubUser](_: String)(_: OFormat[GitHubUser], _: ExecutionContext))
+        .expects(url, *, *)
+        .returning(EitherT.leftT[Future, GitHubUser](error)) // How do we return an error?
+        .once()
+
+      whenReady(testService.getGithubUserByName(urlOverride = Some(url), username = "").value) { either =>
+        either shouldBe Left(error)
+
+      }
+    }
   }
 }
