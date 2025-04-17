@@ -44,9 +44,10 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
 
   def getGithubUserByName(username: String): Action[AnyContent] = Action.async { implicit request =>
     service.getGithubUserByName(username = username).value.map {
-      case Left(error) => APIError(error)
+      case Left(error) => NotFound
       case Right(user) => Ok {
         Json.toJson(user)
       }
     }
   }
+}
