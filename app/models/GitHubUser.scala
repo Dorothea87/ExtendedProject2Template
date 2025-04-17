@@ -3,6 +3,7 @@ package models
 import play.api.libs.json.{Json, OFormat}
 
 case class GitHubUser(_id: String,
+                      login: String,
                       location: Option[String],
                       followers: Int,
                       following: Int,

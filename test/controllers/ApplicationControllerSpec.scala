@@ -14,7 +14,7 @@ import scala.concurrent.Future
 class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   val TestApplicationController = new ApplicationController(
-    component, repoService
+    component, repoService, service
   )(executionContext)
 
   private val dataModel: DataModel = DataModel(
@@ -149,6 +149,13 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       afterEach()
     }
 
+  }
+
+  "Application Controller .getGithubUserByName" should {
+
+    "return a 200 ok with Json" in {
+
+    }
   }
 
 
