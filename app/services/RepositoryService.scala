@@ -1,6 +1,6 @@
 package services
 
-import models.DataModel
+import models.{APIError, DataModel}
 import org.mongodb.scala.result
 import repositories.DataRepositoryTrait
 
@@ -10,7 +10,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class RepositoryService @Inject()(dataRepository: DataRepositoryTrait)(implicit ec: ExecutionContext) {
 
-  def create(user: DataModel): Future[DataModel] =
+  def create(user: DataModel): Future[Either[APIError, DataModel]] =
     dataRepository.create(user)
 
   def read(username: String): Future[DataModel] =

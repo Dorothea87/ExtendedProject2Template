@@ -20,10 +20,10 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   private val dataModel: DataModel = DataModel(
     "abcd",
     "test name",
-    "test date",
     "London",
     100,
-    100
+    100,
+    "test date"
   )
 
   "ApplicationController .create" should {
