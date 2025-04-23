@@ -21,9 +21,12 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   }
 
   def read(username: String): Action[AnyContent] = Action.async { implicit request =>
-    repositoryService.read(username).map(user => Ok {
-      Json.toJson(user)
-    })
+    repositoryService.read(username).map {
+      case Left(APIError.BadAPIResponse(statusCode, message)) =>
+        Status(statusCode)(Json.toJson(message))
+      case Right(None) => NotFound(Json.toJson("No data found"))
+      case Right(Some(item: DataModel)) => Ok(Json.toJson(item))
+    }
   }
 
   def update(username: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
@@ -38,7 +41,11 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
 
 
   def delete(username: String): Action[AnyContent] = Action.async { implicit request =>
-    repositoryService.delete(username).map(_ => Accepted)
+    repositoryService.delete(username).map {
+      case Left(APIError.BadAPIResponse(statusCode, message)) =>
+        Status(statusCode)(Json.toJson(message))
+      case Right(result) => Accepted(Json.toJson(s"Successfully deleted the user: $username"))
+    }
 
   }
 
