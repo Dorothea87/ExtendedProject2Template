@@ -13,12 +13,12 @@ class RepositoryService @Inject()(dataRepository: DataRepositoryTrait)(implicit 
   def create(user: DataModel): Future[Either[APIError, DataModel]] =
     dataRepository.create(user)
 
-  def read(username: String): Future[DataModel] =
+  def read(username: String): Future[Either[APIError, Option[DataModel]]] =
     dataRepository.read(username)
 
-  def update(username: String, user: DataModel): Future[result.UpdateResult] =
+  def update(username: String, user: DataModel): Future[Either[ APIError, result.UpdateResult]] =
     dataRepository.update(username, user)
 
-  def delete(username: String): Future[result.DeleteResult] =
+  def delete(username: String): Future[Either[APIError, result.DeleteResult]] =
     dataRepository.delete(username)
 }
