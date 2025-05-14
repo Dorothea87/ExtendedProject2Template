@@ -1,0 +1,32 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@6e2c9341, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from a new instance of controller[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from the application[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@32464a14, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should create a user in the database[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return BadRequest if JSON is invalid[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update(username: String)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should update an existing data set[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 400 BadRequest if JSON is invalid (non-existent key)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return a bad request, 400 if JSON invalid (value wrong type)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read(username: String)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should find a user in the database by username[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete(username: String)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should delete a user in the database[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 7 events.[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 5 seconds, 395 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 9[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 9, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.HomeControllerSpec[0m
